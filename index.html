@@ -1,250 +1,1185 @@
-<!DOCTYPE html><html><head><title>Thomas AI Spark</title></head><body><h1>Thomas AI Spark 專案導航與展示中心</h1></body></html>
 <!DOCTYPE html>
-<html lang="zh-TW" class="dark">
-  <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Thomas AI Spark Web App Hub</title>
-    <script>
-          tailwind = {
-                  config: {
-                            darkMode: 'class',
-                            theme: {
-                                        extend: {
-                                                      colors: {
-                                                                      brand: {
-                                                                                        50: '#f0f7ff',
-                                                                                        100: '#e0effe',
-                                                                                        500: '#3b82f6',
-                                                                                        600: '#2563eb',
-                                                                                        700: '#1d4ed8',
-                                                                      }
-                                                      }
-                                        }
-                            }
-                  }
-          };
-          (function() {
-                  var s1 = document.createElement('script');
-                  s1.src = 'https://' + 'cdn' + '.' + 'tailwindcss' + '.' + 'com';
-                  document.head.appendChild(s1);
-                  var s2 = document.createElement('script');
-                  s2.src = 'https://' + 'unpkg' + '.' + 'com/lucide@latest';
-                  document.head.appendChild(s2);
-          })();
-    </script>
-      <style>
-            .glass {
-                    background: rgba(255, 255, 255, 0.7);
-                    backdrop-filter: blur(10px);
-            }
-            .dark .glass {
-                    background: rgba(15, 23, 42, 0.75);
-                    backdrop-filter: blur(10px);
-            }
-          </style>
-  </head>
-  <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200">
-      <header class="sticky top-0 z-40 glass border-b border-slate-200 dark:border-slate-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                              <div class="p-2 bg-brand-600 text-white rounded-xl shadow-lg shadow-brand-500/20">
-                                          <i data-lucide="sparkles" class="w-6 h-6"></i>i>
-                              </div>div>
-                              <div>
-                                          <h1 class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                                                        Thomas AI Spark Hub
-                                          </h1>h1>
-                                          <p class="text-xs text-slate-500 dark:text-slate-400">專導航與展示中心</p>p>
-                              </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                              <button id="themeToggle" class="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800" title="切換色彩模式">
-                                          <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>i>
-                                          <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>i>
-                              </button>button>
-                    </div>
-            </div>
-      </header>header>
-
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center max-w-2xl mx-auto mb-8">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
-                              Spark 網頁專案集成與快速導航
-                    </h2>h2>
-                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                              集中管理您在 Spark 建立的所有網頁應用程式，隨時搜尋、速覽功能特色並一鍵開啟。
-                    </p>p>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4 mb-8 justify-between items-stretch md:items-center">
-                    <div class="relative flex-1 max-w-md">
-                              <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>i>
-                              <input type="text" id="searchInput" placeholder="搜尋專案名稱、標籤或關鍵字... (/ 鍵聚焦)" class="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-brand-500 text-sm outline-none transition" />
-                    </div>
-                    <div class="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0" id="categoryFilter"></div>
-            </div>
-
-            <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-            <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-4 items-center justify-between text-xs text-slate-500">
-                    <div>維護者: Thomas (tangfl1115@gmail' + '.' + 'com) | 自動備份於 LocalStorage</div>
-                  <div class="flex items-center space-x-3">
-                            <button id="exportData" class="hover:text-brand-500 transition">匯出 JSON</button>button>
-                            <span></span>
-                          <button id="resetData" class="hover:text-red-500 transition">恢復預設</button>button>
-                  </div>
-            </div>
-      </main>main>
+<html lang="zh-Hant-TW" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thomas AI Spark — 專案導航與展示中心</title>
+  <meta name="description" content="Thomas 的 AI Spark 專案導航中心：集中整合所有在 Spark 所設計與部署的網頁、功能說明與即時檢索入口。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   
-    <script>
-        const DEFAULT_PROJECTS = [
-          {
-                    id: '1',
-                    title: '一字千金文字遊戲',
-                    subtitle: '國中小文字與成語益智題庫',
-                    category: '益智戲',
-                    url: 'https://' + 'tangfl' + '.' + 'github' + '.' + 'io/wordgame/',
-                    tags: ['字字珠璣', '將錯錯', '東拼西湊', '答'],
-                    description: '涵蓋國中小成語與常用字辨析，支援多種趣味關卡與即時搶答機制。'
-          },
-          {
-                    id: '2',
-                    title: '佛光一字千金文字遊戲',
-                    subtitle: '人間佛與三好四給益智題庫',
-                    category: '佛光教育',
-                    url: 'https://' + 'tangfl' + '.' + 'github' + '.' + 'io/buddhist-wordgame/',
-                    tags: ['因緣和合', '正知正見', '三四給', '星雲大師'],
-                    description: '結合人間佛教法語與文化題庫，專為佛光會與社區教育設計的文字互動遊戲。'
-          },
-          {
-                    id: '3',
-                    title: '慧慈寺 AI 應用實務研習專案',
-                    subtitle: '生成式 AI 與 Prompt 工程教學',
-                    category: 'AI研習',
-                    url: 'https://' + 'huitzusi-ai-course' + '.' + 'vercel' + '.' + 'app',
-                    tags: ['生成 AI', 'Prompt 工程', '課堂講義', '實作'],
-                    description: '提供慧慈寺學之生成式 AI 應用課程講義、提示詞範本與務操作平台。'
-          },
-          {
-                    id: '4',
-                    title: 'Vercel 空間釋放與維運理',
-                    subtitle: '自動化清理與 10GB 配額保障',
-                    category: '維運工具',
-                    url: 'https://' + 'github' + '.' + 'com/tangfl',
-                    tags: ['Vercel', '自動化', '配額管理', 'DevOps'],
-                    description: '自動掃描並清理歷史部署版本，協助開發者持儲存空間健康且免於超出配額。'
-          },
-          {
-                    id: '5',
-                    title: '臺灣股市智慧篩選器',
-                    subtitle: '四大多空策略與法人評等量化分析',
-                    category: '投資分析',
-                    url: 'https://' + 'tw-stock-screener-black' + '.' + 'vercel' + '.' + 'app/',
-                    tags: ['台股', '法人評等', '高股息', '估優質股', '量化選股'],
-                    description: '串接 TWSE/TPEx 即數據，提供法人一致看好、百以下低估股、本益比、殖利率及目標價差深度交叉分析。'
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            spark: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            brand: {
+              dark: '#0B0F19',
+              card: '#111827',
+              cardHover: '#1F2937',
+              border: '#1E293B',
+              accent: '#38BDF8',
+              purple: '#A855F7',
+              emerald: '#10B981',
+              amber: '#F59E0B'
+            }
           }
-              ];
-    
-        let projects = JSON.parse(localStorage.getItem('spark_projects')) || DEFAULT_PROJECTS;
-        let currentCategory = '全部';
-        let searchQuery = '';
-    
-        function renderFilters() {
-                const categories = ['全部', ...new Set(DEFAULT_PROJECTS.map(p => p.category))];
-                const filterEl = document.getElementById('categoryFilter');
-                filterEl.innerHTML = categories.map(cat => `
-                        <button onclick="setCategory('${cat}')" class="px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition ${currentCategory === cat ? 'bg-brand-600 text-white shadow-sm' : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-brand-500'}">
-                                  ${cat}
-                                          </button>
-                                                `).join('');
         }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
     
-        function setCategory(cat) {
-                currentCategory = cat;
-                renderFilters();
-                filterAndRender();
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+    }
+    
+    .glow-cyan {
+      box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+    }
+    .glow-purple {
+      box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.25);
+    }
+    .glass-nav {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .card-transition {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.5);
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.8);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-sky-500 selection:text-white transition-colors duration-200">
+
+  <!-- Background Gradients -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400">Thomas AI Spark</span>
+            <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">Hub</span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">Spark 專案聚合與智能導航中心</p>
+        </div>
+      </a>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Add New Project -->
+        <button onclick="openAddModal()" class="inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 rounded-xl shadow-md shadow-sky-600/20 hover:shadow-sky-600/35 transition-all active:scale-95">
+          <i data-lucide="plus-circle" class="w-4 h-4"></i>
+          <span>新增網頁</span>
+        </button>
+
+        <!-- Backup/Restore Dropdown -->
+        <div class="relative">
+          <button id="dataMenuBtn" onclick="toggleDataMenu()" class="p-2 sm:px-3 sm:py-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition-colors flex items-center gap-1.5" title="資料管理與備份">
+            <i data-lucide="database" class="w-4 h-4 text-sky-400"></i>
+            <span class="hidden md:inline">資料管理</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500"></i>
+          </button>
+          <div id="dataMenuDropdown" class="hidden absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-1 z-50 text-xs sm:text-sm">
+            <button onclick="exportData()" class="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center gap-2 text-slate-200">
+              <i data-lucide="download" class="w-4 h-4 text-sky-400"></i> 匯出 JSON 備份
+            </button>
+            <button onclick="document.getElementById('importFileInput').click()" class="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center gap-2 text-slate-200">
+              <i data-lucide="upload" class="w-4 h-4 text-emerald-400"></i> 匯入 JSON 檔案
+            </button>
+            <input type="file" id="importFileInput" accept=".json" class="hidden" onchange="importData(event)">
+            <hr class="border-slate-800 my-1">
+            <button onclick="resetDefaults()" class="w-full text-left px-4 py-2 hover:bg-rose-500/10 text-rose-400 flex items-center gap-2">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重設為預設專案
+            </button>
+          </div>
+        </div>
+
+        <!-- Light / Dark toggle -->
+        <button onclick="toggleTheme()" class="p-2 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition-colors" title="切換明暗模式">
+          <i id="themeIcon" data-lucide="sun" class="w-4 h-4 text-amber-400"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 z-10">
+
+    <!-- Hero / Headline -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-sky-400 text-xs font-semibold mb-4 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Vercel 生產部署 · 網址前綴：thomas-ai-spark</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        Spark 網頁專案 <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400">導航與展示中心</span>
+      </h1>
+      <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
+        告別記憶零散網址！隨時檢索在 Spark 製作的每個應用系統，即時查閱功能特色、內容亮點，一鍵直達目標網站。
+      </p>
+
+      <!-- Search Bar -->
+      <div class="mt-8 relative max-w-2xl mx-auto">
+        <div class="relative flex items-center">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+            <i data-lucide="search" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="搜尋專案名稱、關鍵字、功能說明、標籤或網址... (快捷鍵 /)" 
+            class="w-full pl-11 pr-24 py-3.5 bg-slate-900/90 hover:bg-slate-900 focus:bg-slate-900 text-slate-100 placeholder-slate-500 rounded-2xl border border-slate-800 focus:border-sky-500 focus:ring-4 focus:ring-sky-500/20 text-sm sm:text-base shadow-xl transition-all outline-none"
+            oninput="handleSearch()"
+          >
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-1.5">
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden text-slate-500 hover:text-slate-300 p-1 rounded-md" title="清除">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            <kbd class="hidden sm:inline-block px-2 py-1 text-[11px] font-mono font-semibold text-slate-400 bg-slate-800 border border-slate-700 rounded-lg shadow-sm">/</kbd>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto mt-6">
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 text-center">
+          <div class="text-xl sm:text-2xl font-black text-sky-400" id="statTotalCount">0</div>
+          <div class="text-xs text-slate-400">已整合專案</div>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 text-center">
+          <div class="text-xl sm:text-2xl font-black text-emerald-400" id="statCategoryCount">0</div>
+          <div class="text-xs text-slate-400">涵蓋領域類別</div>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 text-center">
+          <div class="text-xl sm:text-2xl font-black text-purple-400" id="statFeatureCount">0</div>
+          <div class="text-xs text-slate-400">功能特色亮點</div>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 text-center">
+          <div class="text-xl sm:text-2xl font-black text-amber-400" id="statLiveCount">100%</div>
+          <div class="text-xs text-slate-400">在線服務支援</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Toolbar -->
+    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <!-- Category Tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full custom-scrollbar" id="categoryTabs">
+        <!-- Dynamically populated -->
+      </div>
+
+      <!-- Sort & View Controls -->
+      <div class="flex items-center gap-3 self-end md:self-auto shrink-0">
+        <!-- Sort Dropdown -->
+        <div class="flex items-center gap-2 text-xs text-slate-400">
+          <i data-lucide="arrow-up-down" class="w-3.5 h-3.5"></i>
+          <span>排序：</span>
+          <select id="sortSelect" onchange="renderProjects()" class="bg-slate-900 text-slate-200 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs focus:ring-1 focus:ring-sky-500 focus:outline-none">
+            <option value="newest">最新加入</option>
+            <option value="title">專案名稱 (A-Z)</option>
+            <option value="category">依分類排序</option>
+          </select>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-0.5 text-slate-400">
+          <button id="viewGridBtn" onclick="setViewMode('grid')" class="p-1.5 rounded-md hover:text-white bg-slate-800 text-sky-400 transition-colors" title="網格檢視">
+            <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          </button>
+          <button id="viewListBtn" onclick="setViewMode('list')" class="p-1.5 rounded-md hover:text-white transition-colors" title="列表檢視">
+            <i data-lucide="list" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Status Info -->
+    <div class="flex items-center justify-between text-xs text-slate-400 mb-6">
+      <div id="resultsCount">正在載入專案清單...</div>
+      <div id="activeFilterBadge" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-400 border border-sky-500/20">
+        <span id="activeFilterText">過濾中</span>
+        <button onclick="resetFilters()" class="hover:text-white"><i data-lucide="x" class="w-3 h-3"></i></button>
+      </div>
+    </div>
+
+    <!-- Projects Grid Container -->
+    <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Project cards injected here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden py-16 text-center">
+      <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 mx-auto mb-4">
+        <i data-lucide="search-x" class="w-8 h-8 text-sky-400/60"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-200 mb-1">找不到相符的 Spark 專案</h3>
+      <p class="text-sm text-slate-500 max-w-sm mx-auto mb-6">嘗試使用其他關鍵字、標籤搜尋，或是切換分類查看全部專案。</p>
+      <button onclick="resetFilters()" class="px-4 py-2 text-xs font-semibold text-sky-400 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 rounded-xl transition-colors">
+        清除所有過濾條件
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950/60 mt-16 py-8 text-center text-xs text-slate-500 z-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+        <span class="font-medium text-slate-400">Thomas AI Spark Hub</span>
+        <span>· 全網頁專案集成與檢索平台</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="https://vercel.com" target="_blank" class="hover:text-sky-400 transition-colors flex items-center gap-1">
+          <i data-lucide="cloud" class="w-3.5 h-3.5"></i> Vercel Ready
+        </a>
+        <a href="https://github.com" target="_blank" class="hover:text-sky-400 transition-colors flex items-center gap-1">
+          <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub Synced
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Add / Edit Project -->
+  <div id="projectModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg shadow-2xl p-6 relative">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center">
+            <i id="modalIcon" data-lucide="plus-circle" class="w-4 h-4"></i>
+          </div>
+          <h3 id="modalTitle" class="text-base font-bold text-white">新增 Spark 網頁專案</h3>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form id="projectForm" onsubmit="handleSaveProject(event)" class="mt-4 space-y-4 text-xs sm:text-sm">
+        <input type="hidden" id="editProjectId" value="">
+
+        <!-- Name & Emoji -->
+        <div class="grid grid-cols-4 gap-3">
+          <div class="col-span-1">
+            <label class="block text-slate-400 mb-1 font-medium">圖示/Emoji</label>
+            <input type="text" id="projectEmoji" maxlength="4" value="🚀" class="w-full py-2 px-3 text-center text-lg bg-slate-800 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:outline-none">
+          </div>
+          <div class="col-span-3">
+            <label class="block text-slate-400 mb-1 font-medium">專案名稱 <span class="text-rose-400">*</span></label>
+            <input type="text" id="projectName" required placeholder="例：成語益智挑戰賽" class="w-full py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- URL -->
+        <div>
+          <label class="block text-slate-400 mb-1 font-medium">網頁網址 (URL) <span class="text-rose-400">*</span></label>
+          <input type="url" id="projectUrl" required placeholder="https://your-spark-app.vercel.app" class="w-full py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+        </div>
+
+        <!-- Category -->
+        <div>
+          <label class="block text-slate-400 mb-1 font-medium">所屬類別</label>
+          <div class="flex gap-2">
+            <select id="projectCategorySelect" onchange="handleCategorySelectChange()" class="w-1/2 py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:outline-none">
+              <option value="益智遊戲">益智遊戲</option>
+              <option value="佛光教育">佛光教育</option>
+              <option value="AI課程與培訓">AI課程與培訓</option>
+              <option value="開發與維運">開發與維運</option>
+              <option value="工具與應用">工具與應用</option>
+              <option value="custom">自訂類別...</option>
+            </select>
+            <input type="text" id="projectCategoryCustom" placeholder="輸入自訂分類" class="hidden w-1/2 py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div>
+          <label class="block text-slate-400 mb-1 font-medium">內容概要 (簡短介紹)</label>
+          <textarea id="projectSummary" rows="2" placeholder="簡要說明這個網頁的背景與目的..." class="w-full py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-sky-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Features -->
+        <div>
+          <label class="block text-slate-400 mb-1 font-medium">主要功能特色 (每行一項)</label>
+          <textarea id="projectFeatures" rows="3" placeholder="字字珠璣益智聯想&#10;無線即時課堂搶答&#10;三階段智慧解密提示" class="w-full py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 font-mono text-xs focus:ring-2 focus:ring-sky-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Tags -->
+        <div>
+          <label class="block text-slate-400 mb-1 font-medium">關鍵標籤 (逗號分隔)</label>
+          <input type="text" id="projectTags" placeholder="成語, 國中小, 搶答, Vercel" class="w-full py-2 px-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium transition-colors">
+            取消
+          </button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold shadow-lg shadow-sky-500/25 transition-all">
+            儲存專案
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Detail View -->
+  <div id="detailModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl shadow-2xl p-6 relative">
+      <div class="flex items-start justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <span id="detailEmoji" class="text-3xl p-2 rounded-xl bg-slate-800 border border-slate-700">🚀</span>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="detailCategory" class="px-2 py-0.5 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">分類</span>
+              <span id="detailDate" class="text-xs text-slate-500">2026</span>
+            </div>
+            <h3 id="detailTitle" class="text-xl font-bold text-white mt-1">專案名稱</h3>
+          </div>
+        </div>
+        <button onclick="closeDetailModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="mt-5 space-y-5 text-sm">
+        <div>
+          <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">內容概要</h4>
+          <p id="detailSummary" class="text-slate-200 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80">概要內容...</p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">主要功能清單</h4>
+          <ul id="detailFeatures" class="space-y-2">
+            <!-- Features list -->
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">關鍵標籤</h4>
+          <div id="detailTags" class="flex flex-wrap gap-1.5">
+            <!-- Tags -->
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
+          <button onclick="copyProjectUrlFromDetail()" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors">
+            <i data-lucide="copy" class="w-4 h-4"></i> 複製網址
+          </button>
+          <a id="detailLaunchLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 rounded-xl shadow-lg shadow-sky-500/25 transition-all">
+            <span>立即開啟網頁</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 shadow-2xl text-xs sm:text-sm text-white">
+    <i id="toastIcon" data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMsg">通知內容</span>
+  </div>
+
+  <!-- Application Logic -->
+  <script>
+    // Initial built-in projects dataset for Thomas
+    const DEFAULT_PROJECTS = [
+      {
+        id: "spark-wordgame-1",
+        title: "一字千金文字遊戲 — 國中小文字與成語益智題庫",
+        url: "https://tangfl.github.io/wordgame/",
+        category: "益智遊戲",
+        emoji: "🎯",
+        date: "2026-10-03",
+        summary: "專為國小與國中生設計的中文益智挑戰遊戲，收錄教育部國中小學成語及字詞題庫，具備課堂互動與多人競賽模式。",
+        features: [
+          "字字珠璣：核心字聯想，與四周四字組成新詞",
+          "將錯糾錯：找出常見錯別字並挑選正確詞語",
+          "東拼西湊：偏旁部首部件組字挑戰",
+          "四說新語：每句成語各取一字組合新語詞",
+          "洞燭機先＆注音密碼：縱橫成語填字與三階段提示",
+          "無線即時搶答：支援手機同步掃描進入課堂搶答對抗"
+        ],
+        tags: ["成語題庫", "國中小學", "字字珠璣", "即時搶答", "語文益智"]
+      },
+      {
+        id: "spark-buddhist-wordgame",
+        title: "佛光一字千金文字遊戲 — 人間佛教與三好四給益智題庫",
+        url: "https://tangfl.github.io/buddhist-wordgame/",
+        category: "佛光教育",
+        emoji: "🪷",
+        date: "2026-10-02",
+        summary: "專為佛光山道場、童軍與青年設計的人間佛教文字挑戰遊戲，深度結合星雲大師法語、著作與三好四給理念。",
+        features: [
+          "因緣和合：聯想核心字組合經典佛教詞彙",
+          "正知正見：辨識正信佛教語詞與錯別字糾錯",
+          "眾緣合和：將偏旁部件組合為正確佛學漢字",
+          "佛光法語：大師四字正向法語精選重組",
+          "星雲大師著作單元：注音聲母快速猜題與三階段線索",
+          "三好四給精神結合：寓教於樂推廣人間佛教"
+        ],
+        tags: ["人間佛教", "星雲大師", "三好四給", "佛光山", "法語題庫"]
+      },
+      {
+        id: "spark-huitzusi-ai",
+        title: "慧慈寺 AI 應用實務研習專案",
+        url: "https://huitzusi-ai-course.vercel.app",
+        category: "AI課程與培訓",
+        emoji: "💡",
+        date: "2026-09-28",
+        summary: "慧慈寺推動之實用 AI 技能研習與資源平台，幫助大眾跨越數位門檻，輕鬆運用最新生成式 AI 工具於弘法與日常生活。",
+        features: [
+          "生成式 AI 核心工具導覽與操作手冊",
+          "實用提示詞 Prompt 工程範例教學庫",
+          "AI 輔助海報文案創作與影音生成整合",
+          "課堂即時線上講義與學員實作演練互動"
+        ],
+        tags: ["慧慈寺", "AI研習", "Prompt工程", "數位賦能", "生成式AI"]
+      },
+      {
+        id: "spark-vercel-manager",
+        title: "Vercel 部署儲存空間釋放與自動維運管理工具",
+        url: "https://github.com/tangfl",
+        category: "開發與維運",
+        emoji: "⚡",
+        date: "2026-09-28",
+        summary: "自動化檢測與批量清理 Vercel 旗下專案之歷史過期部署版本，精準保留最新 Production 正式站，釋放 10GB 儲存空間。",
+        features: [
+          "全自動跨頁掃描 Vercel 所有專案最新狀態",
+          "嚴格辨識與保護線上正式站 (Latest Production URL)",
+          "批次清理累積舊版本 (Preview Deployments Purge)",
+          "即時終端反饋與釋放容量統計報表"
+        ],
+        tags: ["Vercel", "儲存優化", "CI/CD", "自動化維運", "雲端管理"]
+      },
+      {
+        id: "spark-tw-stock-screener",
+        title: "臺灣股市智慧篩選器 (tw-stock-screener-black)",
+        url: "https://tw-stock-screener-black.vercel.app/",
+        category: "投資分析",
+        emoji: "📈",
+        date: "2026-10-04",
+        summary: "專為臺股設計的智慧策略選股與量化分析工具，串接 TWSE 及 TPEx 行情數據，結合法人分析師評等資料庫交叉比對。",
+        features: [
+          "法人一致看好股：分析師 ≥ 3人、評等 Buy/Strong Buy 且 ROE > 12%",
+          "百元以下低估優質股：小於 100 元具備潛在目標價差與評等保護",
+          "高股息價值股與均線多頭成長股策略模組",
+          "關鍵量化指標：PE、PB、殖利率、營收成長率、ROE",
+          "法人目標價差與潛在上漲空間 (%) 測算",
+          "休市交易日自動回溯、自動重試與暗黑終端高對比視覺風格"
+        ],
+        tags: ["台股", "股票篩選", "法人評等", "本益比", "殖利率", "ROE", "投資分析", "Vercel"]
+      }
+    ];
+
+    // State
+    let projects = [];
+    let activeCategory = "全部";
+    let searchQuery = "";
+    let viewMode = "grid"; // 'grid' | 'list'
+    let currentDetailProject = null;
+
+    // LocalStorage Keys
+    const STORAGE_KEY = "thomas_ai_spark_projects_v1";
+
+    // Initialize
+    function init() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          projects = JSON.parse(saved);
+        } catch (e) {
+          console.error("Failed to parse saved projects, fallback to default", e);
+          projects = [...DEFAULT_PROJECTS];
         }
-    
-        function filterAndRender() {
-                const filtered = projects.filter(p => {
-                          const matchesCategory = currentCategory === '全部' || p.category === currentCategory;
-                          const q = searchQuery.toLowerCase();
-                          const matchesSearch = !q || p.title.toLowerCase().includes(q) || p.subtitle.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.tags.some(t => t.toLowerCase().includes(q));
-                          return matchesCategory && matchesSearch;
-                });
-                renderProjects(filtered);
+      } else {
+        projects = [...DEFAULT_PROJECTS];
+        saveToStorage();
+      }
+
+      setupKeyboardShortcuts();
+      renderCategoryTabs();
+      renderProjects();
+      updateStats();
+      lucide.createIcons();
+    }
+
+    function saveToStorage() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    }
+
+    function setupKeyboardShortcuts() {
+      document.addEventListener("keydown", (e) => {
+        // Press "/" to focus search
+        if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+          e.preventDefault();
+          document.getElementById("searchInput").focus();
         }
-    
-        function renderProjects(items) {
-                const grid = document.getElementById('projectGrid');
-                if (items.length === 0) {
-                          grid.innerHTML = '<div class="col-span-full py-12 text-center text-slate-400 text-sm">找不到符條件的專案</div>';
-                          return;
-                }
-                        grid.innerHTML = items.map(p => `
-                                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
-                                          <div>
-                                                      <div class="flex items-start justify-between mb-2">
-                                                                    <span class="text-xs px-2.5 py-1 bg-brand-50 dark:bg-brand-950/50 text-brand-600 dark:text-brand-400 rounded-full font-medium border border-brand-100 dark:border-brand-900">${p.category}</span>
-                                                                                </div>
-                                                                                            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">${p.title}</h3>
-                                                                                                        <p class="text-xs text-brand-600 dark:text-brand-400 mb-3 font-medium">${p.subtitle}</p>
-                                                                                                                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 line-clamp-2 leading-relaxed">${p.description}</p>
-                                                                                                                                <div class="flex flex-wrap gap-1.5 mb-4">
-                                                                                                                                              ${p.tags.map(t => `<span class="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded">#${t}</span>`).join('')}
-                                                                                                                                                          </div>
-                                                                                                                                                                    </div>
-                                                                                                                                                                              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                                                                                                                                                                                          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline">
-                                                                                                                                                                                                        <span>開啟專案</span>
-                                                                                                                                                                                                                      <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                                                                                                                                                                                                                                  </a>
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                          `).join('');
-                lucide.createIcons();
+        // Press Escape to close modals
+        if (e.key === "Escape") {
+          closeModal();
+          closeDetailModal();
+          closeDataMenu();
         }
-    
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-                searchQuery = e.target.value.trim();
-                filterAndRender();
-        });
-    
-        document.addEventListener('keydown', (e) => {
-                if (e.key === '/' && document.activeElement !== document.getElementById('searchInput')) {
-                          e.preventDefault();
-                          document.getElementById('searchInput').focus();
-                }
-        });
-    
-        document.getElementById('themeToggle').addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-        });
-    
-        document.getElementById('exportData').addEventListener('click', () => {
-                const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(projects, null, 2));
-                const a = document.createElement('a');
-                a.href = dataStr;
-                a.download = 'thomas_spark_hub_backup.json';
-                a.click();
-        });
-    
-        document.getElementById('resetData').addEventListener('click', () => {
-                if (confirm('確定要恢復預設專案資料嗎')) {
-                          localStorage.removeItem('spark_projects');
-                          projects = [...DEFAULT_PROJECTS];
-                          filterAndRender();
-                }
-        });
-    
-        renderFilters();
-        filterAndRender();
-    </script>
-  </body>body>
-</html>html></span>
-                  </div>
-                              </div>
-      </style>
-    </script></title>
-  </head>
+      });
+    }
+
+    // Category Tabs Rendering
+    function renderCategoryTabs() {
+      const categories = ["全部", ...new Set(projects.map(p => p.category))];
+      const container = document.getElementById("categoryTabs");
+      
+      container.innerHTML = categories.map(cat => {
+        const count = cat === "全部" ? projects.length : projects.filter(p => p.category === cat).length;
+        const isActive = activeCategory === cat;
+        return `
+          <button 
+            onclick="setCategory('${cat}')" 
+            class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 flex items-center gap-1.5 ${
+              isActive 
+                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-400/40' 
+                : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-800/80'
+            }">
+            <span>${cat}</span>
+            <span class="px-1.5 py-0.2 rounded-full text-[10px] ${isActive ? 'bg-sky-700/60 text-white' : 'bg-slate-800 text-slate-400'}">${count}</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function setCategory(cat) {
+      activeCategory = cat;
+      renderCategoryTabs();
+      renderProjects();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+      const clearBtn = document.getElementById("clearSearchBtn");
+      if (searchQuery) {
+        clearBtn.classList.remove("hidden");
+      } else {
+        clearBtn.classList.add("hidden");
+      }
+      renderProjects();
+    }
+
+    function clearSearch() {
+      document.getElementById("searchInput").value = "";
+      searchQuery = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
+      renderProjects();
+    }
+
+    function resetFilters() {
+      clearSearch();
+      activeCategory = "全部";
+      renderCategoryTabs();
+      renderProjects();
+    }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      const gridBtn = document.getElementById("viewGridBtn");
+      const listBtn = document.getElementById("viewListBtn");
+      if (mode === "grid") {
+        gridBtn.classList.add("bg-slate-800", "text-sky-400");
+        listBtn.classList.remove("bg-slate-800", "text-sky-400");
+      } else {
+        listBtn.classList.add("bg-slate-800", "text-sky-400");
+        gridBtn.classList.remove("bg-slate-800", "text-sky-400");
+      }
+      renderProjects();
+    }
+
+    function getFilteredAndSortedProjects() {
+      let filtered = projects.filter(p => {
+        // Category filter
+        if (activeCategory !== "全部" && p.category !== activeCategory) {
+          return false;
+        }
+        // Search query filter
+        if (searchQuery) {
+          const matchTitle = (p.title || "").toLowerCase().includes(searchQuery);
+          const matchSummary = (p.summary || "").toLowerCase().includes(searchQuery);
+          const matchCategory = (p.category || "").toLowerCase().includes(searchQuery);
+          const matchUrl = (p.url || "").toLowerCase().includes(searchQuery);
+          const matchTags = (p.tags || []).some(t => t.toLowerCase().includes(searchQuery));
+          const matchFeatures = (p.features || []).some(f => f.toLowerCase().includes(searchQuery));
+          return matchTitle || matchSummary || matchCategory || matchUrl || matchTags || matchFeatures;
+        }
+        return true;
+      });
+
+      // Sort
+      const sortBy = document.getElementById("sortSelect").value;
+      if (sortBy === "newest") {
+        filtered.sort((a, b) => new Date(b.date || "1970-01-01") - new Date(a.date || "1970-01-01"));
+      } else if (sortBy === "title") {
+        filtered.sort((a, b) => a.title.localeCompare(b.title, 'zh-Hant'));
+      } else if (sortBy === "category") {
+        filtered.sort((a, b) => a.category.localeCompare(b.category, 'zh-Hant'));
+      }
+
+      return filtered;
+    }
+
+    // Render Project Cards / List
+    function renderProjects() {
+      const container = document.getElementById("projectsContainer");
+      const emptyState = document.getElementById("emptyState");
+      const resultsCount = document.getElementById("resultsCount");
+      const activeFilterBadge = document.getElementById("activeFilterBadge");
+      const activeFilterText = document.getElementById("activeFilterText");
+
+      const filtered = getFilteredAndSortedProjects();
+
+      // Update Filter Badge
+      if (activeCategory !== "全部" || searchQuery) {
+        activeFilterBadge.classList.remove("hidden");
+        activeFilterBadge.classList.add("inline-flex");
+        activeFilterText.textContent = `${activeCategory !== "全部" ? activeCategory : ""}${searchQuery ? ` · "${searchQuery}"` : ""}`;
+      } else {
+        activeFilterBadge.classList.add("hidden");
+        activeFilterBadge.classList.remove("inline-flex");
+      }
+
+      resultsCount.textContent = `共顯示 ${filtered.length} 個 Spark 專案 (總數 ${projects.length})`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      if (viewMode === "grid") {
+        container.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6";
+        container.innerHTML = filtered.map(p => createGridCardHTML(p)).join("");
+      } else {
+        container.className = "flex flex-col gap-3";
+        container.innerHTML = filtered.map(p => createListRowHTML(p)).join("");
+      }
+
+      lucide.createIcons();
+    }
+
+    function createGridCardHTML(p) {
+      const categoryColor = getCategoryBadgeStyle(p.category);
+      const featurePills = (p.features || []).slice(0, 3).map(f => `
+        <li class="flex items-start gap-1.5 text-xs text-slate-300">
+          <i data-lucide="check" class="w-3.5 h-3.5 text-sky-400 mt-0.5 shrink-0"></i>
+          <span class="truncate">${f}</span>
+        </li>
+      `).join("");
+
+      const tagPills = (p.tags || []).slice(0, 4).map(t => `
+        <span onclick="event.stopPropagation(); quickSearch('${t}')" class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-sky-300 transition-colors cursor-pointer">
+          #${t}
+        </span>
+      `).join("");
+
+      return `
+        <div class="group bg-slate-900/80 hover:bg-slate-900 rounded-2xl border border-slate-800/80 hover:border-sky-500/40 card-transition flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-sky-500/10">
+          
+          <!-- Card Top -->
+          <div class="p-5 sm:p-6 flex-grow">
+            <!-- Header: Category + Status -->
+            <div class="flex items-center justify-between gap-2 mb-3.5">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold ${categoryColor}">
+                ${p.category}
+              </span>
+              <div class="flex items-center gap-1.5 text-slate-500 text-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Spark App</span>
+              </div>
+            </div>
+
+            <!-- Title & Emoji -->
+            <div class="flex items-start gap-3 mb-2.5">
+              <span class="text-2xl p-2 rounded-xl bg-slate-800/90 border border-slate-700/60 shrink-0 group-hover:scale-110 transition-transform">
+                ${p.emoji || '🚀'}
+              </span>
+              <div class="flex-grow min-w-0">
+                <h3 class="text-base font-bold text-white group-hover:text-sky-300 transition-colors line-clamp-1 leading-snug">
+                  ${p.title}
+                </h3>
+                <p class="text-xs text-slate-500 font-mono truncate mt-0.5" title="${p.url}">
+                  ${p.url.replace(/^https?:\/\//, '')}
+                </p>
+              </div>
+            </div>
+
+            <!-- Summary -->
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-4">
+              ${p.summary || '點擊進入網站或查看功能詳情以獲得更多資訊。'}
+            </p>
+
+            <!-- Features Snippet -->
+            ${(p.features && p.features.length > 0) ? `
+              <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800/60 mb-4">
+                <div class="text-[11px] font-semibold text-slate-400 mb-1.5 flex items-center gap-1">
+                  <i data-lucide="sparkles" class="w-3 h-3 text-sky-400"></i> 功能亮點
+                </div>
+                <ul class="space-y-1">
+                  ${featurePills}
+                  ${p.features.length > 3 ? `<li class="text-[10px] text-sky-400/80 pt-0.5">+ 還有 ${p.features.length - 3} 項功能...</li>` : ''}
+                </ul>
+              </div>
+            ` : ''}
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              ${tagPills}
+            </div>
+          </div>
+
+          <!-- Card Bottom Actions -->
+          <div class="px-5 py-3.5 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-1">
+              <button onclick="openDetailModal('${p.id}')" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" title="查看詳細說明">
+                <i data-lucide="info" class="w-4 h-4"></i>
+              </button>
+              <button onclick="copyProjectUrl('${p.url}')" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" title="複製連結">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+              <button onclick="openEditModal('${p.id}')" class="p-2 rounded-lg text-slate-400 hover:text-sky-300 hover:bg-slate-800 transition-colors" title="編輯專案">
+                <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+            <!-- Launch Button -->
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white bg-sky-500 hover:bg-sky-400 shadow-sm shadow-sky-500/20 hover:shadow-sky-500/40 transition-all active:scale-95">
+              <span>前往網站</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+        </div>
+      `;
+    }
+
+    function createListRowHTML(p) {
+      const categoryColor = getCategoryBadgeStyle(p.category);
+      return `
+        <div class="bg-slate-900/80 hover:bg-slate-900 rounded-xl border border-slate-800/80 hover:border-sky-500/40 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 card-transition shadow-sm hover:shadow-md">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <span class="text-2xl p-2 rounded-lg bg-slate-800 shrink-0">
+              ${p.emoji || '🚀'}
+            </span>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold ${categoryColor}">
+                  ${p.category}
+                </span>
+                <h4 class="text-sm font-bold text-white truncate hover:text-sky-300 transition-colors">
+                  ${p.title}
+                </h4>
+              </div>
+              <p class="text-xs text-slate-400 truncate mt-0.5">
+                ${p.summary}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+            <button onclick="openDetailModal('${p.id}')" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" title="詳細資訊">
+              <i data-lucide="info" class="w-4 h-4"></i>
+            </button>
+            <button onclick="copyProjectUrl('${p.url}')" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" title="複製連結">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+            <button onclick="openEditModal('${p.id}')" class="p-2 rounded-lg text-slate-400 hover:text-sky-300 hover:bg-slate-800 transition-colors" title="編輯">
+              <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+            </button>
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-sky-500 hover:bg-sky-400 transition-colors">
+              <span>開啟</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function getCategoryBadgeStyle(cat) {
+      switch(cat) {
+        case "益智遊戲":
+          return "bg-amber-500/10 text-amber-400 border border-amber-500/20";
+        case "佛光教育":
+          return "bg-purple-500/10 text-purple-400 border border-purple-500/20";
+        case "AI課程與培訓":
+          return "bg-sky-500/10 text-sky-400 border border-sky-500/20";
+        case "開發與維運":
+          return "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+        default:
+          return "bg-slate-500/10 text-slate-300 border border-slate-500/20";
+      }
+    }
+
+    function quickSearch(tag) {
+      document.getElementById("searchInput").value = tag;
+      handleSearch();
+    }
+
+    function updateStats() {
+      document.getElementById("statTotalCount").textContent = projects.length;
+      const categories = new Set(projects.map(p => p.category));
+      document.getElementById("statCategoryCount").textContent = categories.size;
+      const totalFeatures = projects.reduce((acc, p) => acc + (p.features ? p.features.length : 0), 0);
+      document.getElementById("statFeatureCount").textContent = totalFeatures;
+    }
+
+    // Modal Operations
+    function openAddModal() {
+      document.getElementById("editProjectId").value = "";
+      document.getElementById("modalTitle").textContent = "新增 Spark 網頁專案";
+      document.getElementById("modalIcon").setAttribute("data-lucide", "plus-circle");
+      document.getElementById("projectForm").reset();
+      document.getElementById("projectEmoji").value = "🚀";
+      document.getElementById("projectCategorySelect").value = "益智遊戲";
+      document.getElementById("projectCategoryCustom").classList.add("hidden");
+      document.getElementById("projectModal").classList.remove("hidden");
+      lucide.createIcons();
+    }
+
+    function openEditModal(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById("editProjectId").value = p.id;
+      document.getElementById("modalTitle").textContent = "編輯 Spark 專案資訊";
+      document.getElementById("modalIcon").setAttribute("data-lucide", "pencil");
+      document.getElementById("projectEmoji").value = p.emoji || "🚀";
+      document.getElementById("projectName").value = p.title || "";
+      document.getElementById("projectUrl").value = p.url || "";
+      
+      const select = document.getElementById("projectCategorySelect");
+      const customInput = document.getElementById("projectCategoryCustom");
+      const standardCats = ["益智遊戲", "佛光教育", "AI課程與培訓", "開發與維運", "工具與應用"];
+      if (standardCats.includes(p.category)) {
+        select.value = p.category;
+        customInput.classList.add("hidden");
+      } else {
+        select.value = "custom";
+        customInput.value = p.category;
+        customInput.classList.remove("hidden");
+      }
+
+      document.getElementById("projectSummary").value = p.summary || "";
+      document.getElementById("projectFeatures").value = (p.features || []).join("\n");
+      document.getElementById("projectTags").value = (p.tags || []).join(", ");
+
+      document.getElementById("projectModal").classList.remove("hidden");
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById("projectModal").classList.add("hidden");
+    }
+
+    function handleCategorySelectChange() {
+      const select = document.getElementById("projectCategorySelect");
+      const customInput = document.getElementById("projectCategoryCustom");
+      if (select.value === "custom") {
+        customInput.classList.remove("hidden");
+        customInput.focus();
+      } else {
+        customInput.classList.add("hidden");
+      }
+    }
+
+    function handleSaveProject(e) {
+      e.preventDefault();
+      const id = document.getElementById("editProjectId").value;
+      const emoji = document.getElementById("projectEmoji").value.trim() || "🚀";
+      const title = document.getElementById("projectName").value.trim();
+      const url = document.getElementById("projectUrl").value.trim();
+      
+      const catSelect = document.getElementById("projectCategorySelect").value;
+      const category = catSelect === "custom" 
+        ? (document.getElementById("projectCategoryCustom").value.trim() || "自訂類別")
+        : catSelect;
+
+      const summary = document.getElementById("projectSummary").value.trim();
+      const featuresRaw = document.getElementById("projectFeatures").value.trim();
+      const features = featuresRaw ? featuresRaw.split("\n").map(f => f.trim()).filter(Boolean) : [];
+      
+      const tagsRaw = document.getElementById("projectTags").value.trim();
+      const tags = tagsRaw ? tagsRaw.split(",").map(t => t.trim()).filter(Boolean) : [];
+
+      if (!title || !url) {
+        showToast("請填寫專案名稱與網址！", "alert-circle");
+        return;
+      }
+
+      if (id) {
+        // Edit existing
+        const idx = projects.findIndex(p => p.id === id);
+        if (idx !== -1) {
+          projects[idx] = {
+            ...projects[idx],
+            emoji,
+            title,
+            url,
+            category,
+            summary,
+            features,
+            tags
+          };
+          showToast("專案更新成功！");
+        }
+      } else {
+        // Add new
+        const newProj = {
+          id: "spark-" + Date.now(),
+          emoji,
+          title,
+          url,
+          category,
+          summary,
+          features,
+          tags,
+          date: new Date().toISOString().split("T")[0]
+        };
+        projects.unshift(newProj);
+        showToast("已成功新增專案！");
+      }
+
+      saveToStorage();
+      closeModal();
+      renderCategoryTabs();
+      renderProjects();
+      updateStats();
+    }
+
+    // Detail Modal
+    function openDetailModal(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+
+      currentDetailProject = p;
+      document.getElementById("detailEmoji").textContent = p.emoji || "🚀";
+      document.getElementById("detailTitle").textContent = p.title;
+      document.getElementById("detailCategory").textContent = p.category;
+      document.getElementById("detailCategory").className = `px-2.5 py-0.5 rounded-full text-xs font-semibold ${getCategoryBadgeStyle(p.category)}`;
+      document.getElementById("detailDate").textContent = p.date ? `建立於 ${p.date}` : "";
+      document.getElementById("detailSummary").textContent = p.summary || "暫無詳細概要。";
+
+      const featuresUl = document.getElementById("detailFeatures");
+      if (p.features && p.features.length > 0) {
+        featuresUl.innerHTML = p.features.map(f => `
+          <li class="flex items-start gap-2 text-slate-200">
+            <i data-lucide="check-circle" class="w-4 h-4 text-sky-400 mt-0.5 shrink-0"></i>
+            <span>${f}</span>
+          </li>
+        `).join("");
+      } else {
+        featuresUl.innerHTML = `<li class="text-slate-500 italic">無特定功能項目說明</li>`;
+      }
+
+      const tagsContainer = document.getElementById("detailTags");
+      if (p.tags && p.tags.length > 0) {
+        tagsContainer.innerHTML = p.tags.map(t => `
+          <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-800 text-sky-300 border border-slate-700">#${t}</span>
+        `).join("");
+      } else {
+        tagsContainer.innerHTML = `<span class="text-xs text-slate-500">無標籤</span>`;
+      }
+
+      const launchBtn = document.getElementById("detailLaunchLink");
+      launchBtn.href = p.url;
+
+      document.getElementById("detailModal").classList.remove("hidden");
+      lucide.createIcons();
+    }
+
+    function closeDetailModal() {
+      document.getElementById("detailModal").classList.add("hidden");
+      currentDetailProject = null;
+    }
+
+    function copyProjectUrlFromDetail() {
+      if (currentDetailProject && currentDetailProject.url) {
+        copyProjectUrl(currentDetailProject.url);
+      }
+    }
+
+    // Utility: Copy URL
+    function copyProjectUrl(url) {
+      if (!url) return;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast("網址已成功複製到剪貼簿！");
+      }).catch(err => {
+        // Fallback
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        showToast("網址已成功複製！");
+      });
+    }
+
+    // Toast
+    function showToast(msg, iconName = "check-circle") {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toastMsg");
+      const toastIcon = document.getElementById("toastIcon");
+
+      toastMsg.textContent = msg;
+      toastIcon.setAttribute("data-lucide", iconName);
+      lucide.createIcons();
+
+      toast.classList.remove("translate-y-16", "opacity-0");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      setTimeout(() => {
+        toast.classList.remove("translate-y-0", "opacity-100");
+        toast.classList.add("translate-y-16", "opacity-0");
+      }, 2500);
+    }
+
+    // Data Menu Dropdown
+    function toggleDataMenu() {
+      const dropdown = document.getElementById("dataMenuDropdown");
+      dropdown.classList.toggle("hidden");
+    }
+
+    function closeDataMenu() {
+      document.getElementById("dataMenuDropdown").classList.add("hidden");
+    }
+
+    window.addEventListener("click", (e) => {
+      const btn = document.getElementById("dataMenuBtn");
+      const dropdown = document.getElementById("dataMenuDropdown");
+      if (btn && dropdown && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add("hidden");
+      }
+    });
+
+    // Export JSON
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projects, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `thomas_ai_spark_backup_${new Date().toISOString().split("T")[0]}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      closeDataMenu();
+      showToast("JSON 備份檔已開始下載！");
+    }
+
+    // Import JSON
+    function importData(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target.result);
+          if (Array.isArray(imported)) {
+            projects = imported;
+            saveToStorage();
+            renderCategoryTabs();
+            renderProjects();
+            updateStats();
+            showToast(`成功匯入 ${imported.length} 個專案！`);
+          } else {
+            showToast("JSON 格式不符 (需為陣列)", "alert-triangle");
+          }
+        } catch (err) {
+          showToast("解析 JSON 失敗，請確認檔案內容", "alert-triangle");
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+      closeDataMenu();
+    }
+
+    // Reset Defaults
+    function resetDefaults() {
+      if (confirm("確定要重設為預設專案清單嗎？這將會還原初始資料。")) {
+        projects = [...DEFAULT_PROJECTS];
+        saveToStorage();
+        renderCategoryTabs();
+        renderProjects();
+        updateStats();
+        closeDataMenu();
+        showToast("已成功重設為預設專案！");
+      }
+    }
+
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeIcon = document.getElementById("themeIcon");
+      if (html.classList.contains("dark")) {
+        html.classList.remove("dark");
+        themeIcon.setAttribute("data-lucide", "moon");
+        themeIcon.classList.remove("text-amber-400");
+        themeIcon.classList.add("text-indigo-400");
+        showToast("已切換為亮色主題");
+      } else {
+        html.classList.add("dark");
+        themeIcon.setAttribute("data-lucide", "sun");
+        themeIcon.classList.remove("text-indigo-400");
+        themeIcon.classList.add("text-amber-400");
+        showToast("已切換為暗色主題");
+      }
+      lucide.createIcons();
+    }
+
+    // Initialize on DOM Ready
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
+
